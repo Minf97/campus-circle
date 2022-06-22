@@ -1,9 +1,0 @@
-{
-  "usingComponents": {
-    "iconBar": "/components/iconBar/iconBar",
-    "inform": "/components/inform/inform"
-  },
-  "navigationBarTitleText": "We校园",
-  "enablePullDownRefresh": true,
-  "navigationStyle": "custom"
-}

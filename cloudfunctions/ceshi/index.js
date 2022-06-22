@@ -6,7 +6,7 @@ const _ = db.command
 
 exports.main = async (event) => {
   const wxContext = cloud.getWXContext()
-  
+  console.log(wxContext);
   const usernameData = (await db.collection("user").where({
     openid: wxContext.OPENID
   }).get()).data[0]

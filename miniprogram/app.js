@@ -2,7 +2,6 @@
 import {
   runInContext
 } from './utils/evil-eval.min.js';
-const dayjs = require('./dayjs')
 const api = require('./utils/api')
 const util = require("./utils/util.js")
 App({

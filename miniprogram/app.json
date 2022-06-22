@@ -5,80 +5,11 @@
     }
   },
   "pages": [
-    "pages/index/index",
-    "pages/login/login",
-    "pages/curriculum/curriculum",
     "pages/more/more",
-    "pages/myself/myself",
-    "pages/test/test",
-    "pages/testdaka/index/index",
-    "pages/testdaka/record/record",
-    "pages/testdaka/allgroup/allgroup",
-    "pages/testdaka/createRoom/createRoom",
-    "pages/testdaka/myGroup/myGroup",
-    "pages/testdaka/addPost/addPost",
-    "pages/testdaka/addDakaChallenge/addDakaChallenge",
-    "pages/testdaka/dakaChallenge/dakaChallenge",
-    "pages/testdaka/applyChallenge/applyChallenge"
+    "pages/login/login",
+    "pages/myself/myself"
   ],
   "subPackages": [
-    {
-      "name": "physical",
-      "root": "pages/physical",
-      "pages": [
-        "physical",
-        "detail/detail"
-      ]
-    },
-    {
-      "name": "common",
-      "root": "pages/common",
-      "pages": [
-        "common"
-      ]
-    },
-    {
-      "name": "HOT",
-      "root": "pages/HOT",
-      "pages": [
-        "HotTop/HotTop",
-        "HotNoTop/HotNoTop",
-        "HotTest/HotTest"
-      ]
-    },
-    {
-      "name": "tomato",
-      "root": "pages/tomato",
-      "pages": [
-        "index/index",
-        "rank/rank",
-        "logs/logs",
-        "text/text"
-      ]
-    },
-    {
-      "name": "association",
-      "root": "pages/association",
-      "pages": [
-        "association",
-        "freshman/freshman",
-        "match/match",
-        "match_detail/match_detail",
-        "add_question/add_question",
-        "edit/edit",
-        "freshmanData/freshmanData",
-        "freshmanDetail/freshmanDetail",
-        "matchDataDetail/matchDataDetail",
-        "allAsso/allAsso"
-      ]
-    },
-    {
-      "name": "curriculum",
-      "root": "pages/curriculum/addcurriculum",
-      "pages": [
-        "addcurriculum"
-      ]
-    },
     {
       "name": "more",
       "root": "pages/more/pages",
@@ -114,22 +45,6 @@
     }
   ],
   "preloadRule": {
-    "pages/index/index": {
-      "network": "all",
-      "packages": [
-        "physical",
-        "common",
-        "HOT",
-        "tomato",
-        "association"
-      ]
-    },
-    "pages/curriculum/curriculum": {
-      "network": "all",
-      "packages": [
-        "curriculum"
-      ]
-    },
     "pages/more/more": {
       "network": "all",
       "packages": [
@@ -156,18 +71,6 @@
     "selectedColor": "#6eaddf",
     "backgroundColor": "@tabBackgroundColor",
     "list": [
-      {
-        "pagePath": "pages/index/index",
-        "iconPath": "/images/tabbar/主页.png",
-        "selectedIconPath": "/images/tabbar/主页_sel.png",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/curriculum/curriculum",
-        "iconPath": "/images/tabbar/课程表.png",
-        "selectedIconPath": "/images/tabbar/课程表_sel.png",
-        "text": "课表"
-      },
       {
         "pagePath": "pages/more/more",
         "iconPath": "/images/tabbar/圈子.png",

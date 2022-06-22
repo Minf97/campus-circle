@@ -74,15 +74,15 @@ Page({
   canWaterScroll() {
     console.log(123);
     let allList = this.data.allList;
-    for(let i in allList) {
-      this.selectComponent(`#waterFlowCards${i}`).setData({ifScroll:true})
+    for (let i in allList) {
+      this.selectComponent(`#waterFlowCards${i}`).setData({ ifScroll: true })
     }
   },
   cannotWaterScroll() {
     console.log(123);
     let allList = this.data.allList;
-    for(let i in allList) {
-      this.selectComponent(`#waterFlowCards${i}`).setData({ifScroll:false})
+    for (let i in allList) {
+      this.selectComponent(`#waterFlowCards${i}`).setData({ ifScroll: false })
     }
   },
   // 卡片内外部渲染一致
@@ -446,15 +446,21 @@ Page({
       iconUrl: args.iconUrl,     // 获取头像
       school: args.school        // 获取学校
     })
-    for(let i in tabitem) {
+    for (let i in tabitem) {
       this.selectComponent(`#waterFlowCards${i}`).setData({ loadAll: false });
     }
-    
+
+  },
+  initOption(e) {
+    let that = this;
+    that.init()
+    that.onPullDownRefresh()
+    that.onShow()
   },
   onLoad: function () {
-    this.init()
+    this.initOption();
     this.onPullDownRefresh()
-  },                 
+  },
   onShow: function () {
     let currentTab = this.data.currentTab;
     this.selectComponent(`#waterFlowCards${currentTab}`).RightLeftSolution();

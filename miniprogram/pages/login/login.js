@@ -57,13 +57,14 @@ Page({
       open: true,
       open_yk: true
     }).get()).data
+    console.log(res);
     var open = false
     var open_yk = false
     res.forEach(e => {
-      if(e.open === true){
+      if (e.open === true) {
         open = true
       }
-      if(e.open_yk === true){
+      if (e.open_yk === true) {
         open_yk = true
       }
       if (e.schoolName !== '空' | "游客登录") {
@@ -71,12 +72,12 @@ Page({
         this.data.urls.push(e.url)
       }
     })
-    if(open){
-      res = [{schoolName : '广东石油化工学院'}]
+    if (open) {
+      res = [{ schoolName: '广东石油化工学院' }]
       this.data.school = ["广东石油化工学院"]
     }
-    if(open_yk){
-      res = [{schoolName : '游客模式'}]
+    if (open_yk) {
+      res = [{ schoolName: '游客模式' }]
       this.data.school = ["游客模式"]
     }
     this.setData({
@@ -130,9 +131,9 @@ Page({
       fail(res) {
         console.log(res)
       },
-      complete(){
+      complete() {
         wx.hideLoading({
-          success: (res) => {},
+          success: (res) => { },
         })
       }
     })
@@ -166,9 +167,8 @@ Page({
         app.globalData.school = that.data.school[that.data.index]
 
         wx.cloud.callFunction({
-          name: 'api',
+          name: 'login_new',
           data: {
-            url: 'login',
             username: that.data.user,
             password: that.data.pwd,
             nickName: res.userInfo.nickName,
@@ -177,54 +177,40 @@ Page({
           },
           success: res => {
             wx.clearStorageSync();        // 清除缓存
-            wx.setStorageSync('time', null)
-            if (res.result.msg == "welcome") {
-              console.log(res.result)
-              wx.reLaunch({
-                url: '/pages/index/index?goin=login'
-              })
-            } else {
-              console.log(res.result)
-              wx.showToast({
-                icon: 'none',
-                title: res.result.msg,
-              })
-            }
-          },
-          fail: err => {
+            console.log(123);
+            wx.showToast({
+              icon: 'none',
+              title: '登陆成功',
+            })
+            // 得到args
             wx.cloud.callFunction({
-              name: 'api',
-              data: {
-                url: 'coverBottom',
-                username: that.data.user,
-                password: that.data.pwd,
-                nickName: res.userInfo.nickName,
-                iconUrl: res.userInfo.avatarUrl,
-                school: that.data.school[that.data.index]
-              },
+              name: 'ceshi',
               success: res => {
-                if (res.result.msg == "welcome") {
-                  console.log(res.result)
-                  wx.reLaunch({
-                    url: '/pages/index/index'
-                  })
-                } else {
-                  console.log(res.result)
-                  wx.showToast({
-                    icon: 'none',
-                    title: res.result.msg,
-                  })
+                console.log(res);
+                var args = wx.getStorageSync('args') || []
+                var new_args = res.result
+                console.log("获取到数据")
+                if ((!(JSON.stringify(new_args) === JSON.stringify(wx.getStorageSync('args'))))) {
+                  console.log("进入函数更新")
+                  new_args = {
+                    ...args,
+                    ...new_args
+                  }
+                  wx.setStorageSync('args', new_args)
                 }
+                wx.reLaunch({
+                  url: '/pages/more/more'
+                })
               },
-              fail: err => {
-
+              fail: res => {
+                console.log(res)
                 wx.showToast({
                   icon: 'none',
-                  title: '校园网关闭或者服务器异常',
+                  title: "模版请求错误",
                 })
+
               }
             })
-
           }
         })
 

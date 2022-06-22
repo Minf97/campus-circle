@@ -1,8 +1,0 @@
-@media (prefers-color-scheme: dark) {
-
-
- .text-green{
-  filter: invert(90%) !important;
- }
-  
-}
